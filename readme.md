@@ -12,16 +12,21 @@ fn main() {
 ## 2. 데이터 타입
 ```rust
 fn main() {
-    let int_num: i32 = 42; // 정수
-    let float_num: f64 = 3.14; // 실수
-    let is_active: bool = true; // 불리언
-    let letter: char = 'R'; // 문자
-    let tuple: (i32, f64, char) = (42, 3.14, 'R'); // 튜플
-    let array: [i32; 3] = [1, 2, 3]; // 배열
+    let byte_num: i8 = 8; // 8비트 정수(1바이트)
+    let short_num: i16 = 16; // 16비트 정수(2바이트)
+    let int_num: i32 = 32; // 32비트 정수(4바이트)
+    let long_num: i64 = 64; // 64비트 정수(8바이트)
+    let float_num: f32 = 3.14; // 32비트 실수(4바이트)
+    let double_num: f64 = 3.14; // 64비트 실수(8바이트)
+    let is_active: bool = true; // 불리언(1바이트)
+    let letter: char = 'R'; // 문자(4바이트)
+    let tuple: (i32, f64, char) = (42, 3.14, 'R'); // 튜플(가변)
+    let array: [i32; 3] = [1, 2, 3]; // 배열(가변)
 
     println!("Tuple: {:?}", tuple);
     println!("Array: {:?}", array);
-}```
+}
+```
 ## 3. 조건문과 반복문
 ```rust
 fn main() {
@@ -56,7 +61,9 @@ fn main() {
     let sum = add(3, 4);
     println!("3 + 4 = {}", sum);
 }
+```
 ## 5. 구조체 (Struct) 및 메서드
+```rust
 struct Person {
     name: String,
     age: u8,
