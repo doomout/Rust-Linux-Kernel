@@ -37,12 +37,41 @@ fn main() {
 fn main() {
     let number = 10;
 
-    // 조건문
+    // if 조건문
     if number > 5 {
         println!("큰 숫자!");
     } else {
         println!("작은 숫자!");
     }
+
+    // let-if 문
+    let condition = true;
+    // if문의 값을 ret에 저장
+    let ret = if condition == true {
+        String::from("조건이 참 입니다.") // ;을 붙이면 컴파일 오류 발생
+    } else {
+        String::from("조건이 거짓 입니다.") // ;을 붙이면 컴파일 오류 발생
+    }; // 여기는 ;을 붙여야 한다.
+    
+    println!("ret={}", ret);
+    
+    // match 문
+    let var = 1;
+    match var {
+        1 => println!("하나"),
+        2 => println!("둘"),
+        _ => println!("기타"), // default 조건
+    }
+
+    // let-match 문
+    let var = 1;
+    let ret = match var {
+        1 => String::from("하나"),
+        2 => String::from("둘"),
+        _ => String::from("기타"),
+    }; // 세미콜론을 붙여야 합니다.
+    
+    println!("ret={}", ret);
 
     // 반복문
     for i in 1..=5 {
