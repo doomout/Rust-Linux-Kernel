@@ -32,7 +32,7 @@ fn main() {
     println!("Array: {:?}", array);
 }
 ```
-## 3. 조건문과 반복문
+## 3. 조건문
 ```rust
 fn main() {
     let number = 10;
@@ -72,20 +72,45 @@ fn main() {
     }; // 세미콜론을 붙여야 합니다.
     
     println!("ret={}", ret);
-
-    // 반복문
-    for i in 1..=5 {
-        println!("반복: {}", i);
-    }
-
-    let mut count = 0;
-    while count < 3 {
-        println!("while 반복: {}", count);
-        count += 1;
-    }
 }
 ```
-## 4. 함수 및 반환값
+## 4. 반복문
+```rust
+fn main() {
+//loop 반복문
+    loop {
+        println!("숫자를 입력해주세요. 0을 입력하면 종료합니다");
+        let mut read = String::new();
+        io::stdin().read_line(&mut read).unwrap();
+        let val: i32 = read.trim().parse().unwrap();
+
+        if val == 0 {
+            break; //종료
+        }
+
+        println!("입력={}", val);
+    }
+
+// for 문: 전체 반복
+    let arr = [1, 2, 3, 4, 5];
+    for a in arr { //arr 전체를 순회
+        print!("{}, ", a);
+    }
+// for 문: 범위로 반복
+    for a in 0..5 { //5회 반복
+        print!("{},", a);
+    }
+
+// while 문
+    let mut counter = 0;
+    while counter < 5 { //counter 가 5보다 작을 때까지 반복
+        print!("{},", counter);
+        counter += 1;
+    }
+    
+}
+```
+## 5. 함수 및 반환값
 ```rust
 fn add(a: i32, b: i32) -> i32 {
     a + b // 세미콜론 없음 = 반환 값
@@ -96,7 +121,7 @@ fn main() {
     println!("3 + 4 = {}", sum);
 }
 ```
-## 5. 구조체 (Struct) 및 메서드
+## 6. 구조체 (Struct) 및 메서드
 ```rust
 struct Person {
     name: String,
@@ -118,7 +143,7 @@ fn main() {
     person.greet();
 }
 ```
-## 6. 열거형 (Enum)
+## 7. 열거형 (Enum)
 ```rust
 enum Direction {
     Up,
@@ -141,7 +166,7 @@ fn main() {
     move_player(dir);
 }
 ```
-##  7. 소유권 (Ownership) 및 참조
+##  8. 소유권 (Ownership) 및 참조
 ```rust
 fn main() {
     let s = String::from("Hello");
@@ -169,7 +194,7 @@ fn calculate_length(s: &String) -> usize {
     s.len() // 참조를 사용하여 소유권 이동 없음
 }
 ```
-## 8. 패턴 매칭 (Match)
+## 9. 패턴 매칭 (Match)
 ```rust
 fn main() {
     let number = 3;
@@ -182,7 +207,7 @@ fn main() {
     }
 }
 ```
-## 9. Result 및 Option
+## 10. Result 및 Option
 ```rust
 fn divide(x: f64, y: f64) -> Result<f64, String> {
     if y == 0.0 {
