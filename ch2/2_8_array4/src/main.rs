@@ -1,3 +1,5 @@
+//Rust는 메모리 안정성을 보장하기 위해 배열 범위를 벗어난 인덱스 접근을 허용하지 않는다.
+
 use std::io; // std::io 패키지 로드
 
 fn main() {
@@ -12,3 +14,7 @@ fn main() {
 
     println!("arr[{}]={}", index, arr[index as usize]);
 }
+/** 실행결과
+ 일부러 인덱스 범위를 벗어난 값을 입력했다 (7 입력) 
+ index out of bounds: the len is 5 but the index is 7
+ */

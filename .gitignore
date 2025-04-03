@@ -1,5 +1,5 @@
 # ❌ Rust 빌드 아티팩트 제외
-/target/  # Cargo 빌드 출력물
+**/*/target/  # Cargo 빌드 출력물
 **/*.rs.bk  # Rust 파일 백업본
 
 # ❌ Cargo.lock 제외 (라이브러리일 경우)
@@ -18,7 +18,7 @@ Desktop.ini
 *.bak   # 백업 파일
 
 # 실행 파일(.exe) 제외
-main.exe
+**/*.exe
 
 # 디버그 정보 파일(.pdb) 제외
-main.pdb
+**/*.pdb
