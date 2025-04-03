@@ -9,7 +9,7 @@ fn main() {
 
     println!("arr[6]={}", arr[6]);  // 6번 인덱스를 참조
 }
-/**실행결과
+/*실행결과
  * error: this operation will panic at runtime
  --> main.rs:8:5
   |

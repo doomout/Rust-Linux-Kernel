@@ -5,7 +5,7 @@ fn main() {
     println!("{}", s.to_uppercase()); //대문자로 변환
 }
 
-/**실행결과
+/*실행결과
  Hello Rust
   hello rust 
   HELLO RUST 

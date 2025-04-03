@@ -8,7 +8,7 @@ fn main() {
     let var = 1; // 불변 변수 생성
     var = 2; // 컴파일 오류 발생
 }
-/**실행결과
+/*실행결과
  warning: variable `var` is assigned to, but never used
  --> main.rs:8:9
   |

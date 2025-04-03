@@ -14,7 +14,7 @@ fn main() {
 
     println!("arr[{}]={}", index, arr[index as usize]);
 }
-/** 실행결과
+/* 실행결과
  일부러 인덱스 범위를 벗어난 값을 입력했다 (7 입력) 
  index out of bounds: the len is 5 but the index is 7
  */

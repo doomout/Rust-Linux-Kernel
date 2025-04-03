@@ -8,6 +8,6 @@ fn main() {
     // 튜플의 각 요소에 접근하여 출력
     println!("tuple: {}, {}, {}", tuple.0, tuple.1, tuple.2);
 }
-/**실행결과
+/*실행결과
  tuple: 1, 2, 3
  */

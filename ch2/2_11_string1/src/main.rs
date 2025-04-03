@@ -11,7 +11,7 @@ fn main() {
     println!("{}", s);
 }
 
-/** 실행결과
+/* 실행결과
   Hello
   Hello Rust!
 */

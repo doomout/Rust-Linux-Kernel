@@ -6,7 +6,7 @@ fn main() {
     println!("a = {}", a);    
 }
 
-/**실행결과
+/*실행결과
 thread 'main' panicked at main.rs:3:9:
 attempt to add with overflow
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

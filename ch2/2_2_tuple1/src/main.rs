@@ -5,6 +5,6 @@ fn main() {
     println!("x={}, y={}, z={}", x, y, z);
 }
 
-/**실행결과
+/*실행결과
  x=1, y=a, z=true
  */
