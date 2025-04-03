@@ -112,14 +112,23 @@ fn main() {
 ```
 ## 5. 함수 및 반환값
 ```rust
-fn add(a: i32, b: i32) -> i32 {
+//반환 값이 없는
+fn add(x: i32, y: i32) {
+    println!("{}+{}={}", x, y, (x + y));
+}
+
+//반환 값이 있는 함수
+fn add(a: i32, b: i32) -> i32 { //-> i32는 반환 값의 타입을 나타냅니다.
     a + b // 세미콜론 없음 = 반환 값
 }
 
-fn main() {
-    let sum = add(3, 4);
-    println!("3 + 4 = {}", sum);
-}
+//익명 함수
+let x = 1;
+let y = 2;
+let ret = { // 익명 함수의 반환값을 ret에 저장
+    x + y //;이 없다.
+}; //여기에 ;이 있다.
+println!("{}+{}={}", x, y, ret)
 ```
 ## 6. 구조체 (Struct) 및 메서드
 ```rust
