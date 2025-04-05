@@ -15,6 +15,10 @@ impl Score {
             String::from("C")
         }
     }
+    // 정적 메서드 (Rust의 from() 느낌)
+    fn from(score: i32) -> Score {
+        Score { score: score }
+    }
 }
 
 
@@ -24,17 +28,8 @@ fn main() {
 
 #[test]
 fn test_get_grade() {
-    // Score 구조체의 인스턴스를 생성
-    let score = Score { score: 100 };
-
-    // score.get_grade()가 "A"를 반환하는지 검사
-    assert_eq!(score.get_grade(), "A");
-    
-    // Score 구조체의 인스턴스를 생성
-    let score = Score { score: 80 };
-    
-    // score.get_grade()가 "B"를 반환하는지 검사
-    assert_eq!(score.get_grade(), "B");
+    assert_eq!(Score::from(100).get_grade(), "A");
+    assert_eq!(Score::from(80).get_grade(), "B");
 }
 
 /* 테스트 결과

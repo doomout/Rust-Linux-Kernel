@@ -140,27 +140,36 @@ fn main() {
     println!("10 + 5 = {}", add(5)); // 클로저 호출 (5) : 10 + 5가 됨
 }
 ```
-## 6. 구조체 (Struct) 및 메서드
+## 6. 구조체, 메서드, 연관 함수
+- struct 가 데이터고
+- impl 은 그 데이터가 할 수 있는 동작(method)을 구현하는 공간
 ```rust
-struct Person {
-    name: String,
-    age: u8,
+// 데이터(필드)만 정의
+struct Score {
+    score: i32,
 }
 
-impl Person {
-    fn greet(&self) {
-        println!("안녕하세요! 저는 {}이고, {}살입니다.", self.name, self.age);
+// Score에 관련된 동작(메서드) 정의
+// impl: 구조체(struct)나 enum에 동작(method)을 구현(implement)할 때 사용
+impl Score { 
+    // &self 붙으면 → 인스턴스 메서드
+    // self 없음 → 정적 메서드
+    fn get_grade(&self) -> String {
+        if self.score >= 90 {
+            String::from("A")
+        } else if self.score >= 80 {
+            String::from("B")
+        } else {
+            String::from("C")
+        }
+    }
+    // 정적 메서드
+    fn from(score: i32) -> Score {
+        //Score {필드이름: 값}
+        Score { score: score }
     }
 }
 
-fn main() {
-    let person = Person {
-        name: String::from("홍길동"),
-        age: 25,
-    };
-
-    person.greet();
-}
 ```
 ## 7. 열거형 (Enum)
 ```rust
