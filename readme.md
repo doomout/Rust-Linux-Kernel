@@ -171,27 +171,40 @@ impl Score {
 }
 
 ```
-## 7. 열거형 (Enum)
+## 7. 열거형 (Enum), Option 열거형
+- 러스트는 null 이 없다.
 ```rust
-enum Direction {
-    Up,
-    Down,
-    Left,
-    Right,
+// Message 라는 열거형(enum)을 정의
+// 열거형은 여러 타입을 묶어서 하나의 타입으로 표현할 수 있음
+enum Message {
+    Quit,               // 값이 없는 열거형
+    List(i32),          // 정수형 값을 가지는 열거형
+    Put(String),        // 문자열(String)을 가지는 열거형
+    Get(i32),           // 정수형 값을 가지는 열거형
 }
 
-fn move_player(direction: Direction) {
-    match direction {
-        Direction::Up => println!("위로 이동!"),
-        Direction::Down => println!("아래로 이동!"),
-        Direction::Left => println!("왼쪽으로 이동!"),
-        Direction::Right => println!("오른쪽으로 이동!"),
+// Message 열거형에 메서드 정의
+impl Message {
+    // execute 라는 메서드 정의 (각 열거형에 따라 다른 동작을 함)
+    fn execute(&self) {
+        // 열거형 타입별로 처리 방식 분기 (패턴 매칭)
+        match self {
+            Message::Quit => println!("Quit"),               // Quit 이면 출력
+            Message::List(val) => println!("List: {}", val), // List 이면 값 출력
+            Message::Put(val) => println!("Put: {}", val),   // Put 이면 문자열 출력
+            Message::Get(val) => println!("Get: {}", val),   // Get 이면 값 출력
+        }
     }
 }
-
-fn main() {
-    let dir = Direction::Left;
-    move_player(dir);
+// Option<T> 는 null 대신 사용하는 열거형 타입
+fn print_optional(val: Option<String>) {
+    // match 구문을 사용해서 Option 값을 패턴 매칭으로 처리
+    match val {
+        // 값이 있을 때 (Some) → 내부 값 출력
+        Some(val) => println!("{}", val),
+        // 값이 없을 때 (None) → "None" 출력
+        None => println!("None"),
+    }
 }
 ```
 ##  8. 소유권 (Ownership) 및 참조
