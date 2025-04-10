@@ -278,3 +278,57 @@ fn main() {
 - pub(crate): 현재 crate에 한정해 정보를 제공
 - pub(super): 상위 모듈에 정보를 제공
 - pub(self) 또는 생략: 정보를 외부에 공개하지 않음
+## 12. 오류처리
+rust 는 복구 가능한 오류, 복구 불가능한 오류로 구분하여 예외 처리 한다.
+- 복구 가능한 오류
+```rust
+fn main() {
+    //"test.txt" 이라는 파일을 열려고 시도
+    let result = File::open("test.txt");
+
+    //result는 Result 타입으로, 이를 통해 파일 열기의 성공 또는 실패를 확인 가능
+    let f = match result { 
+        Ok(f) => f, // 파일 열기에 성공시 File 객체를 f에 저장
+        Err(err) => { // 파일 열기에 실패하면 에러 정보를 출력하고 프로그램 종료
+            panic!("파일 열기 실패: {:?}", err)
+        },
+    };
+
+    //여기에 도달하면 파일 열기에 성공 했음을 의미
+    println!("파일 열기 성공");
+}
+```
+- 위의 예제를 축약(unwrap () 사용)
+```rust
+fn main() {
+    // "test.txt"라는 파일을 열려고 시도하며, 실패시 패닉을 일으킨다.
+    // unwrap() 메서드는 Result 가 ok값이면 그 값을 반환하고, 
+    // Err값이면 panic을 발생시킨다.
+    let f = File::open("test.txt").unwrap();
+    
+    // 여기에 도달하면 파일 열기에 성공했음을 의미한다.
+    println!("파일 열기 성공");
+}
+```
+- 지정된 오류 메세지 출력(expect(에러 메세지)사용)
+```rust
+fn main() {
+    // expect() 메서드는 Result가 ok값이면 지정된 에러 메세지를 출력한다.
+    let f = File::open("test.txt").expect("에러");
+    println!("파일 열기 성공");
+}
+```
+- ? 키워드로 오류 전파
+```rust
+fn read_from_file(path: String) -> Result<String, io::Error> {
+    let mut s = String::new(); // 읽은 문자열을 저장할 문자열 객체
+    let mut f = File::open(path)?; // ? 연산자를 사용하여 파일 열기, 실패하면 즉시 오류 반환
+    f.read_to_string(&mut s)?; //파일 읽기, 실패하면 즉시 오류 반환
+    Ok(s) // 파일 읽기 성공시 문자열 반환
+}
+
+fn main() {
+    let ret = read_from_file(String::from("test.txt")).expect("파일이 없습니다.");
+    println!("test.txt: {}", ret);
+}
+```
