@@ -280,7 +280,7 @@ fn main() {
 - pub(self) 또는 생략: 정보를 외부에 공개하지 않음
 ## 12. 오류처리
 rust 는 복구 가능한 오류, 복구 불가능한 오류로 구분하여 예외 처리 한다.
-- 복구 가능한 오류
+### 복구 가능한 오류
 ```rust
 fn main() {
     //"test.txt" 이라는 파일을 열려고 시도
@@ -330,5 +330,21 @@ fn read_from_file(path: String) -> Result<String, io::Error> {
 fn main() {
     let ret = read_from_file(String::from("test.txt")).expect("파일이 없습니다.");
     println!("test.txt: {}", ret);
+}
+```
+### 복구 불가능한 오류
+```rust
+fn div(a: i32, b: i32) -> i32 {
+    if b == 0 {
+        // panic! 는 복구 불가능한 오류를 일으키려고 할 때 쓰인다.
+        panic!("0으로 나눌 수 없습니다.")
+    }
+
+    a / b
+}
+
+fn main() {
+    let ret = div(1, 0);
+    println!("ret: {}", ret);
 }
 ```
