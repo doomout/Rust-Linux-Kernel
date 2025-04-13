@@ -348,3 +348,18 @@ fn main() {
     println!("ret: {}", ret);
 }
 ```
+## 13. 컬렉션
+### 컬렉션 종류
+- Sequence
+    - Vec: 크기 조정이 가능한 배열
+    - VecDeque: 앞뒤 양쪽에 자료를 추가, 삭제할 수 있는 큐
+    - LinkedList: 한 줄로 연결되게 관리하는 자료구조, 삽입/삭제가 빈번할 때 사용
+- Map
+    - HashMap: Key, Value의 쌍으로 이루어진 자료구조
+    - BTreeMap: B-Tree를 기반으로 하는 정렬된 Map
+- Set
+    - HashSet: 하나의 자료만 담을 수 있는 집합 구조
+    - BTreeSet: B-Tree를 기반으로 하는 정렬된 Set
+- 기타
+    - BinaryHeap: 우선순위 큐
+    - String: 문자열
