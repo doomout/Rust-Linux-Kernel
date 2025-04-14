@@ -1,5 +1,8 @@
-extern crate encoding_rs;
-
+/* 
+인코딩을 변경하기 위해서는 Cargo.toml에 아래와 같이 추가한다. 
+[dependencies]
+encoding_rs = "*"
+*/
 use encoding_rs::{EUC_KR, UTF_8};
 use std::str;
 
@@ -22,3 +25,9 @@ fn main() {
     // 결과 출력
     println!("EUC-KR to UTF-8: {}", utf8_string);
 }
+
+/*실행결과
+UTF-8: [236, 149, 136, 235, 133, 149, 237, 149, 152, 236, 132, 184, 236, 154, 148]
+EUC-KR: [190, 200, 179, 231, 199, 207, 188, 188, 191, 228]
+EUC-KR to UTF-8: 안녕하세요 
+*/
