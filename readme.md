@@ -363,7 +363,7 @@ fn main() {
 - 기타
     - BinaryHeap: 우선순위 큐
     - String: 문자열
-### Vee
+### Vee : 인덱스로 바로 접근 가능한 가변 배열
 ```rust
 // 벡터 생성
 let mut v: Vec<i32> = Vec::new();
@@ -386,7 +386,7 @@ v[1] = 20;
 v.remove(0); // 0번 인덱스 삭제
 v.pop();     // 마지막 요소 삭제
 ```
-### LinkedList
+### LinkedList :  요소 삽입/삭제가 많고 중간 삽입이 필요한 경우 적합.
 ```rust
 use std::collections::LinkedList;
 
@@ -403,5 +403,88 @@ list.pop_front();
 // 반복 및 접근
 for val in &list {
     println!("{}", val);
+}
+```
+### HashMap : 키-값 쌍 저장용.
+```rust
+use std::collections::HashMap;
+
+let mut scores = HashMap::new();
+
+// 값 추가
+scores.insert(String::from("Blue"), 10);
+scores.insert(String::from("Red"), 20);
+
+// 값 접근
+if let Some(score) = scores.get("Blue") {
+    println!("Blue 팀 점수: {}", score);
+}
+
+// 반복
+for (key, value) in &scores {
+    println!("{}: {}", key, value);
+}
+
+// 값 갱신
+scores.insert(String::from("Blue"), 30);
+
+// 키가 없을 때만 삽입
+scores.entry(String::from("Green")).or_insert(50);
+```
+### HashSet :  중복 없는 값 저장용.
+```rust
+use std::collections::HashSet;
+
+let mut set = HashSet::new();
+
+// 값 추가
+set.insert("apple");
+set.insert("banana");
+
+// 포함 여부 확인
+if set.contains("apple") {
+    println!("사과 있음!");
+}
+
+// 값 제거
+set.remove("banana");
+
+// 반복
+for item in &set {
+    println!("{}", item);
+}
+```
+### Binary Heap : 최대, 최소값을 찾을 때 많이 사용
+```rust
+//최대값
+let mut heap = BinaryHeap::new();
+// 값 추가 (자동 정렬됨 - 최대 힙)
+heap.push(10);
+heap.push(5);
+heap.push(20);
+
+// 최대값 확인 (pop 없이)
+if let Some(max) = heap.peek() {
+    println!("최대값: {}", max); // 20
+}
+
+// 최대값 꺼내기 (pop은 값을 제거함)
+if let Some(max) = heap.pop() {
+    println!("꺼낸 값: {}", max); // 20
+}
+
+// 반복적으로 pop하면 큰 값부터 나옴
+while let Some(val) = heap.pop() {
+    println!("{}", val);
+}
+
+//최소 값
+let mut min_heap = BinaryHeap::new();
+min_heap.push(Reverse(10));
+min_heap.push(Reverse(1));
+min_heap.push(Reverse(5));
+
+while let Some(Reverse(val)) = min_heap.pop() {
+    println!("{}", val); // 1, 5, 10 순으로 출력
 }
 ```
