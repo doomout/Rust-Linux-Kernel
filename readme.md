@@ -363,3 +363,45 @@ fn main() {
 - 기타
     - BinaryHeap: 우선순위 큐
     - String: 문자열
+### Vee
+```rust
+// 벡터 생성
+let mut v: Vec<i32> = Vec::new();
+let mut v = vec![1, 2, 3];
+
+// 요소 추가
+v.push(4);
+
+// 요소 접근
+let third = v[2];
+match v.get(2) {
+    Some(x) => println!("세 번째 요소: {}", x),
+    None => println!("없음"),
+}
+
+// 요소 변경
+v[1] = 20;
+
+// 요소 삭제
+v.remove(0); // 0번 인덱스 삭제
+v.pop();     // 마지막 요소 삭제
+```
+### LinkedList
+```rust
+use std::collections::LinkedList;
+
+let mut list = LinkedList::new();
+
+// 요소 추가
+list.push_back(10); // 뒤에 추가
+list.push_front(5); // 앞에 추가
+
+// 요소 삭제
+list.pop_back();
+list.pop_front();
+
+// 반복 및 접근
+for val in &list {
+    println!("{}", val);
+}
+```
