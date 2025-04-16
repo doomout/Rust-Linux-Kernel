@@ -524,3 +524,37 @@ fn main() {
     }
 }
 ```
+## 14. 동시성
+### std::thread : 스레드를 생성하고 제어
+```rust
+use std::fs::File;
+use std::io::{BufReader, BufRead};
+use std::thread;
+
+fn main() {
+    // 새로운 스레드를 생성하고, 그 핸들을 받기
+    let handle = thread::spawn(|| { 
+        //"file.txt" 파일 열기
+        let file = File::open("file.txt").unwrap(); 
+
+        // 버퍼링을 사용해 파일 읽기
+        let reader = BufReader::new(file); 
+
+        // 파일의 각 줄을 읽어오기
+        for line in reader.lines() {
+            // 각 줄의 텍스트 읽기
+            let txt = line.unwrap();
+            println!("{}", txt);
+        }
+    });
+
+    // 스레드가 끝날 때까지 대기
+    // 스레드가 종료되면 join() 메서드가 호출됨
+    match handle.join() {
+        Ok(_) => {},
+        Err(e) => {
+            println!("스레드 내부에서 오류가 발생했습니다. {:?}", e);
+        }
+    };
+}
+```
