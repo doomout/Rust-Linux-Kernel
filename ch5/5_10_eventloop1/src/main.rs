@@ -1,3 +1,4 @@
+//이벤트 루프 예제
 use std::io;
 
 fn main() {
@@ -15,3 +16,11 @@ fn main() {
         println!("입력: {}", input);
     }
 }
+
+/*실행결과
+dd
+입력: dd
+aa
+입력: aa
+quit 
+*/

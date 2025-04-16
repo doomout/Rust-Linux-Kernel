@@ -632,3 +632,56 @@ fn main() {
     println!("1부터 100까지의 합: {}", sum);
 }
 ```
+### tokio : 비동기(Async) 작업을 실행할 수 있도록 도와주는 런타임 라이브러리
+```rust
+use std::time::Duration;
+use tokio::time;
+
+// async 로 비동기 함수로 지정
+async fn sleep_10sec() {
+    for i in 1..10 {
+        println!(".");
+        time::sleep(Duration::from_millis(1000)).await; // 1초간 10회 대기
+    }
+}
+
+// async 로 비동기 함수로 지정
+async fn calc_sum(start: i32, end: i32) -> i32 {
+    let mut sum = 0;
+
+    for i in start..=end {
+        println!("{} ", i);
+        sum += i;
+    }
+
+    sum
+}
+
+async fn calc() -> i32 {
+    let f1 = sleep_10sec();
+    let f2 = calc_sum(1, 10);
+
+    // sleep_10sec() 와 calc_sum()가 동시에 수행된다.
+    let (_, sum) = tokio::join!(f1, f2); //tokio::join!() 를 사용해 비동기 함수를 대기한다.
+    sum
+}
+
+//tokio를 사용하는 비동기 메인 함수
+#[tokio::main]
+async fn main() {
+    let sum = calc().await;
+
+    println!("sum={}", sum);
+}
+```
+## 15. 이벤트 루프 모델과 스레드 모델의 장단점
+### 이벤트 루프
+- 특징: 단일 스레드를 사용, 이벤트를 종료될 때까지 무한 반복해서 처리
+- 장점: 최소한의 오베헤드로 많은 이벤트 처리 가능, 복잡한 동기화 필요 없음
+- 단점: 단일 스레드를 사용하여 CPU 연산이 많은 작업에는 부적합
+- 사용 예: UI가 있는 프로그램, I/O 작업이 많은 서비스 등
+### 스레드
+- 특징: 스레드별로 작업이 할당되는 방식.
+- 장점: CPU 코어가 충분할 경우 복수의 작업을 병렬화해 빠르게 전체 작업을 수행
+- 단점: CPU 코어 갯수가 넘어설 정도로 많은 처리를 할시 스위칭 비용으로 성능 지연 발생, 복잡한 동기화 메커니즘 필요
+- 사용 예: CPU 연산량이 많은 작업(알고리즘 등)
