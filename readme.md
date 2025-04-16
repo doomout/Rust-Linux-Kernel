@@ -525,7 +525,7 @@ fn main() {
 }
 ```
 ## 14. 동시성
-### std::thread : 스레드를 생성하고 제어
+### thread : 스레드를 생성하고 제어
 ```rust
 use std::fs::File;
 use std::io::{BufReader, BufRead};
@@ -556,5 +556,44 @@ fn main() {
             println!("스레드 내부에서 오류가 발생했습니다. {:?}", e);
         }
     };
+}
+```
+### mpsc : 채널을 생성하여 여러 스레드의 데이터를 공유
+```rust
+fn main() {
+    //mpsc 채널 생성 tx는 송신자, rx는 수신자
+    let (tx1, rx) = mpsc::channel(); 
+    let tx2 = mpsc::Sender::clone(&tx1); // tx1복제
+
+    // 1부터 50까지의 합
+    thread::spawn(move || {
+        let mut sum = 0;
+
+        for i in 1..=50 {
+            sum = sum + i;
+        }
+
+        tx1.send(sum).unwrap();
+    });
+
+    // 51부터 100까지의 합
+    thread::spawn(move || {
+        let mut sum = 0;
+
+        for i in 51..=100 {
+            sum = sum + i;
+        }
+
+        tx2.send(sum).unwrap();
+    });
+
+    let mut sum = 0;
+    
+    for val in rx {
+        println!("수신: {}", val);
+        sum = sum + val;
+    } 
+
+    println!("1부터 100까지의 합: {}", sum);
 }
 ```
