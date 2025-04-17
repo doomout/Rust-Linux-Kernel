@@ -633,6 +633,9 @@ fn main() {
 }
 ```
 ### tokio : 비동기(Async) 작업을 실행할 수 있도록 도와주는 런타임 라이브러리
+Cargo.toml 에 의존성 추가
+[dependencies]
+tokio = { version = "1.25.0", features = ["full"] }
 ```rust
 use std::time::Duration;
 use tokio::time;
@@ -685,3 +688,31 @@ async fn main() {
 - 장점: CPU 코어가 충분할 경우 복수의 작업을 병렬화해 빠르게 전체 작업을 수행
 - 단점: CPU 코어 갯수가 넘어설 정도로 많은 처리를 할시 스위칭 비용으로 성능 지연 발생, 복잡한 동기화 메커니즘 필요
 - 사용 예: CPU 연산량이 많은 작업(알고리즘 등)
+## 15. 동시성 제어 기법
+### 뮤텍스: 여러 스레드가 공유 자원에 동시에 접근하지 못하도록 막는 기법
+```rust
+use std::thread;
+use std::sync::Mutex;
+
+static counter: Mutex<i32> = Mutex::new(0); // 전역 뮤텍스 변수
+
+fn inc_counter() {
+    let mut num = counter.lock().unwrap(); // 뮤텍스 잠금
+    *num += 1; // 값 증가
+} // 함수 종료 시 자동으로 unlock
+
+fn main() {
+    let mut thread_vec = vec![];
+
+    for _ in 0..100 {
+        let th = thread::spawn(inc_counter); // 스레드 생성
+        thread_vec.push(th); // 핸들 저장
+    }
+
+    for th in thread_vec {
+        th.join().unwrap(); // 스레드 종료 대기
+    }
+
+    println!("결과: {}", *counter.lock().unwrap()); // 최종 결과 출력
+}
+```
