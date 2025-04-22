@@ -1,3 +1,6 @@
+// clone() 메서드는 Clone trait을 구현한 타입에서만 사용할 수 있다.
+// Clone trait을 구현한 타입은 clone() 메서드를 사용하여 객체를 복사할 수 있다.
+// Clone trait을 구현하지 않은 타입은 clone() 메서드를 사용할 수 없다.
 #[derive(Debug)]
 struct Person {
     name: String,
@@ -28,3 +31,8 @@ fn main() {
     println!("{:?}", person1);
     println!("{:?}", person2);
 }
+
+/*실행결과
+Person { name: "루나", age: 10, cloned: false }
+Person { name: "루나", age: 10, cloned: true } 
+*/
