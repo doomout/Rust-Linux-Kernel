@@ -15,8 +15,16 @@ fn main() -> io::Result<()> {
     }
 
     // 디렉터리 삭제
-    fs::remove_dir("example_directory")?;
-    println!("example_directory 삭제됨");
+    //fs::remove_dir("example_directory")?;
+    //println!("example_directory 삭제됨");
 
     Ok(())
 }
+/*실행 결과
+example_directory 생성됨
+현재 실행 디렉터리 내용:
+".\\example_directory"
+".\\main.exe"
+".\\main.pdb"
+".\\main.rs" 
+*/
