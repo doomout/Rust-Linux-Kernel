@@ -1,7 +1,7 @@
 use std::path::{Path, PathBuf};
 
 fn main() {
-    // Path 생성
+    // Path : 참조용, 읽기만 가능
     let path = Path::new("/tmp/test.txt");
 
     // 경로의 파일명 추출
@@ -14,10 +14,16 @@ fn main() {
         println!("확장자: {:?}", extension);
     }
 
-    // 경로 조작하기 위한 PathBuf 생성
+    // PathBuf : 소유 및 수정 가능
     let mut path_buf = PathBuf::from("/tmp/foo");
     
     // 경로에 파일명 추가
     path_buf.push("example.txt");
     println!("전체 경로: {:?}", path_buf);  
 }
+
+/*실행 결과
+파일명: "test.txt"
+확장자: "txt"
+전체 경로: "/tmp/foo\\example.txt" 
+*/
