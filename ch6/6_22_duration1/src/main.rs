@@ -10,3 +10,8 @@ fn main() {
     println!("Duration간 덧셈 결과: {:?}", sum);
     println!("Duration간 뺄셈 결과: {:?}", minus);
 }
+
+/*실행결과
+Duration간 덧셈 결과: 2s
+Duration간 뺄셈 결과: 0ns
+*/
