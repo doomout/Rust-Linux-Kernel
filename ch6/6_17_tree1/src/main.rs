@@ -32,3 +32,10 @@ fn main() -> io::Result<()> {
 
     Ok(())
 }
+
+
+/*실행결과
+    tree1.d
+    tree1.exe
+    tree1.pdb 
+*/
