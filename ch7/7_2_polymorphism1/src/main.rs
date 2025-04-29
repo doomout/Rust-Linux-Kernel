@@ -1,5 +1,5 @@
 // 다형성 : 객체가 문맥에 따라 다른 자료형으로 형태를 취할 수 있게 하는 것.
-// 러스트는 trait 키워드와 dyn 키워드를 사용하여 다형성을 제공한다.
+// 러스트는 trait, dyn를 사용하여 다형성을 제공한다.
 
 // trait 정의
 trait Hello {
@@ -31,6 +31,8 @@ impl Hello for Teacher {
     }
 }
 
+// 다형성을 사용하기 위해서는 trait 객체를 사용해야 한다.
+// trait 객체는 "&dyn 트레잇 이름" 형식으로 정의한다.
 fn say_hello(say: &dyn Hello) {
     println!("{}", say.hello_msg());
 }
