@@ -1,6 +1,6 @@
-macro_rules! create_function {
-    ($func_name:ident) => {
-        fn $func_name() {
+macro_rules! create_function { //함수를 생성하는 매크로
+    ($func_name:ident) => { //함수 이름을 입력받아 $func_name에 저장
+        fn $func_name() { //func_name이라는 이름의 함수를 생성
             println!("함수: {:?}()", stringify!($func_name));
         }
     };
@@ -12,3 +12,6 @@ create_function!(ident_func);
 fn main() {
     ident_func();
 }
+
+/*실행결과
+함수: "ident_func"() */

@@ -1,10 +1,11 @@
-macro_rules! create_accessors {
-    ($name:ident, $type:ty, $setter:ident) => {
+// Setter 함수를 자동으로 생성하는 예제
+macro_rules! create_accessors { //접근자를 생성하는 매크로
+    ($name:ident, $type:ty, $setter:ident) => { //변수명과 타입, setter 함수명을 입력 받는다.
         fn $name(&self) -> &$type {
             &self.$name
         }
 
-        fn $setter(&mut self, value: $type) {
+        fn $setter(&mut self, value: $type) { //setter 함수를 생성한다.
             self.$name = value;
         }
     };
@@ -27,3 +28,7 @@ fn main() {
 
     println!("이름: {} 나이: {}", person.name, person.age)
 }
+
+/*실행결과
+이름: 하이 나이: 8
+*/
