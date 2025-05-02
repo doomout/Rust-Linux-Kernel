@@ -813,3 +813,17 @@ async fn main() {
 | 타입 검사	    | 타입 체크 가능              | 타입이 없어서 타입 체크 불가능             |
 | 성능	        | 함수 호출로 오버헤드 가능성 | 성능 오버헤드 발생 안함                    |
 | 목적	        | 코드 재사용과 모듈화	      | 반복되는 패턴, 성능 최적화, 조건부 컴파일  |
+- Designator : 매크로에서 메타변수의 타입을 지정하는 역할을 합니다.
+- 자주 쓰이는 Designator 종류
+
+|Designator |	설명 |
+|----------|--------|
+| ident	| 식별자 (예: 변수명, 함수명 등) |
+| expr	| 표현식 (예: 1 + 2, func(x) 등) |
+| ty	| 타입 (i32, String, Vec<T> 등) |
+| pat	| 패턴 (Some(x), x @ Some(_), _ 등) |
+| block	| 코드 블록 ({ ... }) |
+| path	| 경로 (std::io::Result, self::mod::Thing) |
+| tt	| 토큰 트리 (아무 토큰 조합 – 가장 자유로움) |
+| meta	| 메타 아이템 (attribute 내부에서 사용) |
+| stmt	| 문(statement) |
