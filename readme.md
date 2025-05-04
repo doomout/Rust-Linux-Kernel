@@ -829,5 +829,5 @@ async fn main() {
 | stmt	| 문(statement) |
 
 ## 23. 리눅스 시스템 프로그래밍
-- Windows에서 Rust 리눅스 개발 환경 구축하기
+- Windows에서 Rust 리눅스 개발 환경 구축하기  
 https://khgsw.blogspot.com/2025/05/8-1.html 에 정리

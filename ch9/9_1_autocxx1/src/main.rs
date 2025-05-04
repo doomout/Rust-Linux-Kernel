@@ -1,3 +1,12 @@
+/* 의존성 추가
+[dependencies]
+cxx = "*"
+autocxx = "*"
+
+[build-dependencies]
+autocxx-build = "*"
+miette = { version = "*", features = ["fancy"] }
+*/
 use autocxx::prelude::*;
 
 // C++ 코드와 상호 작용을 위한 설정을 합니다.
@@ -25,3 +34,8 @@ fn main() {
     // Test 클래스의 to_string 메서드를 호출하여 결과를 출력합니다.
     println!("{}", test.to_string().as_ref().unwrap().to_string_lossy());
 }
+
+/*실행결과
+4x3=12
+Test: Called 2 times.
+*/
