@@ -1,3 +1,8 @@
+/*의존성 추가
+[dependencies]
+shared_memory = "*"
+*/
+// 공유 메모리를 쓰기 위한 프로그램
 extern crate shared_memory;
 
 use shared_memory::*;
@@ -34,3 +39,11 @@ fn main() {
         thread::sleep(Duration::from_secs(1));
     }
 }
+
+/*실행결과
+Writing: 0
+Writing: 1
+Writing: 2
+Writing: 3
+Writing: 4
+*/
