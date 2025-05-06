@@ -1,3 +1,9 @@
+/*의존성 추가
+[dependencies]
+memmap = "*"
+*/
+// 메모리 맵을 사용하여 파일에 데이터를 쓰고 읽는 예제
+// memmap 라이브러리를 사용하여 메모리 맵을 생성하고 파일에 데이터를 쓰고 읽는 예제
 use memmap::{MmapMut, MmapOptions};
 use std::fs::OpenOptions;
 use std::env;
@@ -52,3 +58,11 @@ fn read_from_mmap() {
     let content = String::from_utf8_lossy(&mmap);
     println!("Read from mmap: {}", content);
 }
+
+/*
+실행 결과(쓰기 모드): cargo run write
+메시지를 작성했습니다.
+
+실행 결과(읽기 모드): cargo run read
+Read from mmap: Hello from mmap!
+*/
