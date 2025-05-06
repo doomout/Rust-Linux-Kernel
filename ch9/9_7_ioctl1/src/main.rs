@@ -1,3 +1,8 @@
+/* 의존성 추가
+[dependencies]
+libc = "*"
+*/
+//ioctl 을 사용하여 터미널의 열, 행 크기 얻기
 extern crate libc;
 
 use std::os::unix::io::AsRawFd;
@@ -46,3 +51,7 @@ fn main() {
         }
     }
 }
+
+/*실행 결과
+Terminal size: 226x13
+*/
