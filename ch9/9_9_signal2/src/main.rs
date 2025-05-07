@@ -1,3 +1,8 @@
+/* 의존성 추가
+[dependencies]
+signal-hook = "*"
+*/
+// 별도의 스레드를 생성해 SIGINT 신호를 수신 대기하는 예제입니다.
 use signal_hook::{consts::SIGINT, iterator::Signals};
 use std::{error::Error, thread, time::Duration};
 
@@ -9,7 +14,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     thread::spawn(move || {
         // signals.forever()를 사용하여 지속적으로 신호를 확인하고 대기합니다.
         for sig in signals.forever() {
-\            println!("SIGINT수신.");
+            println!("SIGINT수신.");
             // 프로세스를 종료합니다.
             std::process::exit(0);
         }
@@ -20,3 +25,9 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
+
+/*실행결과
+SIGINT를 수신하거나 Ctrl+C를 입력하면 종료합니다.
+^C
+SIGINT수신.
+*/
