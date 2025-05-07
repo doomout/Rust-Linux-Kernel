@@ -1,3 +1,10 @@
+/* 의존성 추가
+[dependencies]
+dbus = "*"
+*/
+
+// DBus 클라이언트 예제
+// DBus 서버에서 제공하는 Hello 메서드를 호출합니다.
 use dbus::blocking::Connection;
 use std::time::Duration;
 
@@ -16,3 +23,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
+
+/*실행 결과 : 서버 실행 후 실행 할 때마다 횟수가 오른다.
+수신: 안녕 luna! API호출 횟수: 1
+수신: 안녕 luna! API호출 횟수: 2
+수신: 안녕 luna! API호출 횟수: 3
+*/
