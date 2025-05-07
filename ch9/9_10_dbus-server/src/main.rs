@@ -1,3 +1,11 @@
+/*의존성 추가
+[dependencies]
+dbus = "*"
+dbus-crossroads = "*"
+*/
+
+// DBus 서버 예제
+// Hello 메서드가 몇번 호출 되었는지 나타내는 32비트 정수값 저장
 use dbus::blocking::Connection;
 use dbus_crossroads::{Crossroads, Context};
 use std::error::Error;
@@ -9,6 +17,7 @@ struct Hello {
 fn main() -> Result<(), Box<dyn Error>> {
     // 새로운 DBus 세션 연결을 생성합니다.
     let c = Connection::new_session()?;
+
     // "com.example.dbustest"라는 이름을 요청하여 DBus에 등록합니다.
     c.request_name("com.example.dbustest", false, true, false)?;
 
@@ -39,3 +48,9 @@ fn main() -> Result<(), Box<dyn Error>> {
     
     Ok(())
 }
+
+/*실행 결과 : 클라이언트가 3번 요청 한다면.
+클라이언트 쿼리: 안녕 luna!
+클라이언트 쿼리: 안녕 luna!
+클라이언트 쿼리: 안녕 luna!
+*
