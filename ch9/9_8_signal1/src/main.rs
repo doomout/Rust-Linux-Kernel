@@ -1,3 +1,9 @@
+/*의존성 추가
+[dependencies]
+signal-hook = "*"
+*/
+// signal-hook 라이브러리를 사용하여 SIGINT 신호를 수신하는 예제
+// 이 예제는 Ctrl+C를 눌러 SIGINT 신호를 수신하고, 이를 처리하여 프로그램을 종료하는 방법을 보여줌.
 use std::thread::sleep;
 use std::time::Duration;
 use std::io::Error;
@@ -25,3 +31,8 @@ fn main() -> Result<(), Error> {
 
     Ok(())
 }
+
+/*실행결과
+SIGINT를 수신하거나 Ctrl+C를 입력하면 종료합니다.
+SIGINT수신.
+*/
